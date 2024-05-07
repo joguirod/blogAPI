@@ -21,7 +21,7 @@ public class AuthorService {
 
     public Author getAuthorById(Long id) throws AuthorNotFoundException {
         Optional<Author> author = authorRepository.findById(id);
-        if(author.isEmpty()) throw new AuthorNotFoundException("Autor com id informado não encontrado");
+        if(author.isEmpty()) throw new AuthorNotFoundException("Author with informed id not found");
 
         return author.get();
     }
