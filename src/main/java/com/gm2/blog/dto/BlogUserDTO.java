@@ -6,8 +6,6 @@ import java.time.LocalDateTime;
 
 public record BlogUserDTO (
         @NotBlank
-        Long id,
-        @NotBlank
         String username,
         @NotBlank
         String password,

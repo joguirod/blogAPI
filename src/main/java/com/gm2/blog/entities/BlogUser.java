@@ -25,7 +25,6 @@ public class BlogUser {
     private LocalDateTime registrationDate;
 
     public BlogUser(BlogUserDTO blogUserDTO) {
-        this.blogUserId = blogUserDTO.id();
         this.username = blogUserDTO.username();
         this.password = blogUserDTO.password();
         this.email = blogUserDTO.email();
