@@ -17,7 +17,7 @@ public class Author{
     private String name;
     private String biography;
 
-    @OneToOne(mappedBy = "author")
+    @OneToOne
     private BlogUser user;
     @OneToMany(mappedBy = "author")
     private List<Post> postList;
