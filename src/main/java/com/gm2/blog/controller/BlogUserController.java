@@ -29,7 +29,7 @@ public class BlogUserController {
         return new ResponseEntity<>(blogUserService.getBlogUserById(id), HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping()
     public ResponseEntity<BlogUser> createBlogUser(@RequestBody BlogUserDTO blogUserDTO){
         return new ResponseEntity<>(blogUserService.createBlogUser(blogUserDTO), HttpStatus.CREATED);
     }
