@@ -11,7 +11,6 @@ public record BlogUserDTO (
         String password,
         @NotBlank
         String email,
-        @NotBlank
         LocalDateTime registrationDate
 ){
 };
