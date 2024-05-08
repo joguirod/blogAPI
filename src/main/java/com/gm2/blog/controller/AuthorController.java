@@ -30,6 +30,6 @@ public class AuthorController {
 
     @PostMapping()
     public ResponseEntity<Author> createAuthor(@RequestBody AuthorDTO authorDTO){
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(authorService.createAuthor(authorDTO), HttpStatus.CREATED);
     }
 }
