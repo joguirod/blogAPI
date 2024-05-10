@@ -3,6 +3,7 @@ package com.gm2.blog.controller;
 import com.gm2.blog.dto.AuthorDTO;
 import com.gm2.blog.entities.Author;
 import com.gm2.blog.exceptions.AuthorNotFoundException;
+import com.gm2.blog.exceptions.BlogUserNotFoundException;
 import com.gm2.blog.service.AuthorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,7 @@ public class AuthorController {
     }
 
     @PostMapping()
-    public ResponseEntity<Author> createAuthor(@RequestBody AuthorDTO authorDTO){
+    public ResponseEntity<Author> createAuthor(@RequestBody AuthorDTO authorDTO) throws BlogUserNotFoundException {
         return new ResponseEntity<>(authorService.createAuthor(authorDTO), HttpStatus.CREATED);
     }
 }

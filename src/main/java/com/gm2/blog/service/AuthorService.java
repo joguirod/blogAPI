@@ -17,9 +17,12 @@ public class AuthorService {
     private final AuthorRepository authorRepository;
 
     private final BlogUserRepository blogUserRepository;
-    public AuthorService(AuthorRepository authorRepository, BlogUserRepository blogUserRepository){
+
+    private final BlogUserService blogUserService;
+    public AuthorService(AuthorRepository authorRepository, BlogUserRepository blogUserRepository, BlogUserService blogUserService){
         this.authorRepository = authorRepository;
         this.blogUserRepository = blogUserRepository;
+        this.blogUserService = blogUserService;
     }
 
     public List<Author> getAllAuthors(){
@@ -33,12 +36,12 @@ public class AuthorService {
         return author.get();
     }
 
-    public Author createAuthor(AuthorDTO authorDTO){
+    public Author createAuthor(AuthorDTO authorDTO) throws BlogUserNotFoundException {
         Author author = new Author();
 
-        Optional<BlogUser> user = blogUserRepository.findById((long) authorDTO.blogUserId());
+        BlogUser user = blogUserService.getBlogUserById((long) authorDTO.blogUserId());
 
-        author.setUser(user.get());
+        author.setUser(user);
         author.setName(authorDTO.name());
         author.setBiography(authorDTO.biography());
 
