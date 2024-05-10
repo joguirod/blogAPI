@@ -47,5 +47,25 @@ public class AuthorService {
 
         return authorRepository.save(author);
     }
-    
+
+    public Author updateAuthor(Long id, AuthorDTO authorDTO) throws AuthorNotFoundException, BlogUserNotFoundException {
+        Optional<Author> authorTemp = authorRepository.findById(id);
+        if(authorTemp.isEmpty()) throw new AuthorNotFoundException("Author with informed id not found");
+
+        BlogUser user = blogUserService.getBlogUserById((long) authorDTO.blogUserId());
+
+        Author author = authorTemp.get();
+        author.setName(authorDTO.name());
+        author.setUser(user);
+        author.setName(authorDTO.name());
+
+        return authorRepository.save(author);
+    }
+
+    public void deleteAuthor(Long id) throws AuthorNotFoundException {
+        Optional<Author> authorTemp = authorRepository.findById(id);
+        if(authorTemp.isEmpty()) throw new AuthorNotFoundException("Author with informed id not found");
+
+        authorRepository.delete(authorTemp.get());
+    }
 }

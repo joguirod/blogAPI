@@ -33,4 +33,15 @@ public class AuthorController {
     public ResponseEntity<Author> createAuthor(@RequestBody AuthorDTO authorDTO) throws BlogUserNotFoundException {
         return new ResponseEntity<>(authorService.createAuthor(authorDTO), HttpStatus.CREATED);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Author> updateAuthor(@PathVariable Long id, @RequestBody AuthorDTO authorDTO) throws AuthorNotFoundException, BlogUserNotFoundException {
+        return new ResponseEntity<>(authorService.updateAuthor(id, authorDTO), HttpStatus.OK);
+    }
+
+    @DeleteMapping()
+    public ResponseEntity deleteAuthor(@PathVariable Long id) throws AuthorNotFoundException {
+        authorService.deleteAuthor(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
