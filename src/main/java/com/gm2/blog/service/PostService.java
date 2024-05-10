@@ -59,4 +59,9 @@ public class PostService {
 
         postRepository.delete(post);
     }
+
+    public void addUpVoteToPost(Long id) throws PostNotFoundException {
+        Post post = getPostById(id);
+        post.incrementUpVotes();
+    }
 }

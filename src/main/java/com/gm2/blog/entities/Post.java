@@ -27,4 +27,8 @@ public class Post {
     public Post(){
         this.postDate = LocalDateTime.now();
     }
+
+    public void incrementUpVotes(){
+        upVotes++;
+    }
 }

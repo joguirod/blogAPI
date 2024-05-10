@@ -47,4 +47,10 @@ public class PostController {
         postService.deletePost(id);
         return new ResponseEntity(HttpStatus.OK);
     }
+
+    @PostMapping("/{id}")
+    public ResponseEntity upVotePost(@PathVariable Long id) throws PostNotFoundException {
+        postService.addUpVoteToPost(id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }
