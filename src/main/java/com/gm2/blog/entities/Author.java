@@ -1,5 +1,6 @@
 package com.gm2.blog.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,5 +21,6 @@ public class Author{
     @OneToOne
     private BlogUser user;
     @OneToMany(mappedBy = "author")
+    @JsonIgnore
     private List<Post> postList;
 }
