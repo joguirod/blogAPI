@@ -21,7 +21,7 @@ public class Post {
     private int downVotes;
     private LocalDateTime postDate;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne
     private Author author;
 
     public Post(){

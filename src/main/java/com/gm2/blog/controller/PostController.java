@@ -23,6 +23,7 @@ public class PostController {
         this.postService = postService;
     }
 
+    @GetMapping
     public ResponseEntity<List<Post>> getAllPosts(){
         return new ResponseEntity<>(postService.getAllPosts(), HttpStatus.OK);
     }
